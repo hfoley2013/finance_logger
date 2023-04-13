@@ -17,28 +17,6 @@ export class ListTemplate {
         deleteBtn.addEventListener('click', (e) => {
             e.preventDefault();
             this.container.removeChild(li);
-            const deleteFromLocalStorage = (key) => {
-                const localStorageInvoices = localStorage.getItem('invoices');
-                const localStoragePayments = localStorage.getItem('payments');
-                if (localStorageInvoices) {
-                    const invoicesFromStorage = JSON.parse(localStorageInvoices);
-                    const indexInInvoices = invoicesFromStorage.findIndex((item) => item.uid.toString() == key);
-                    if (indexInInvoices !== -1) {
-                        invoicesFromStorage.splice(indexInInvoices, 1);
-                        localStorage.setItem('invoices', JSON.stringify(invoicesFromStorage));
-                        return;
-                    }
-                }
-                if (localStoragePayments) {
-                    const paymentsFromStorage = JSON.parse(localStoragePayments);
-                    const indexInPayments = paymentsFromStorage.findIndex((item) => item.uid.toString() === key);
-                    if (indexInPayments !== -1) {
-                        paymentsFromStorage.splice(indexInPayments, 1);
-                        localStorage.setItem('payments', JSON.stringify(paymentsFromStorage));
-                        return;
-                    }
-                }
-            };
             deleteFromLocalStorage(id);
         });
         li.append(deleteBtn);
@@ -50,3 +28,25 @@ export class ListTemplate {
         }
     }
 }
+const deleteFromLocalStorage = (key) => {
+    const localStorageInvoices = localStorage.getItem('invoices');
+    const localStoragePayments = localStorage.getItem('payments');
+    if (localStorageInvoices) {
+        const invoicesFromStorage = JSON.parse(localStorageInvoices);
+        const indexInInvoices = invoicesFromStorage.findIndex((item) => item.uid.toString() == key);
+        if (indexInInvoices !== -1) {
+            invoicesFromStorage.splice(indexInInvoices, 1);
+            localStorage.setItem('invoices', JSON.stringify(invoicesFromStorage));
+            return;
+        }
+    }
+    if (localStoragePayments) {
+        const paymentsFromStorage = JSON.parse(localStoragePayments);
+        const indexInPayments = paymentsFromStorage.findIndex((item) => item.uid.toString() === key);
+        if (indexInPayments !== -1) {
+            paymentsFromStorage.splice(indexInPayments, 1);
+            localStorage.setItem('payments', JSON.stringify(paymentsFromStorage));
+            return;
+        }
+    }
+};
