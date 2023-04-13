@@ -6,9 +6,10 @@ export class Payment implements HasFormatter{
     public recipient: string,
     public details: string,
     public amount: number,
+    public uid: number,
   ){}
 
   format() {
-    return `${this.recipient} was paid $${this.amount} for ${this.details}.`;
+    return `${this.recipient} was paid $${this.amount.toFixed(2)} for ${this.details}.`;
   }
 }
