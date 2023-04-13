@@ -1,5 +1,7 @@
 // Holds all invoices
 let invoices = [];
+// Holds all payments
+let payments = [];
 // Get form from DOM
 const form = document.querySelector('.new-item-form');
 // Form Fields
