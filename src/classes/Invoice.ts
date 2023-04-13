@@ -1,4 +1,4 @@
-import { HasFormatter } from "../interfaces/HasFormatter";
+import { HasFormatter } from "../interfaces/HasFormatter.js";
 
 // Creates Invoice class for billing
 export class Invoice implements HasFormatter{
